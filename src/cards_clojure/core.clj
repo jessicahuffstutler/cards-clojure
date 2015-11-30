@@ -27,7 +27,7 @@
   (= 1 (count (set (map :suit hand)))))
 
 (defn -main [& args]
-  (let [deck (create-deck)
-        hands (create-hands deck)
-        hands (filter flush? hands)]
-    (println (count hands))))
+  (time (let [deck (create-deck)                            ;time tells us how much time elapsed while getting the 2860 answer.
+              hands (create-hands deck)
+              hands (filter flush? hands)]
+          (println (count hands)))))
