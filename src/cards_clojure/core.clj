@@ -29,6 +29,12 @@
        (take 4
              (iterate inc min)))))
 
+;alt straight? code
+#_ (defn straight? [hand]
+     (let [sorted (sort (map :rank hand))
+           smalles (first sorted)]
+       (= sorted (range smallest (+ smallest 4)))))
+
 (defn straight-flush? [hand]
   (and
     (straight? hand)
@@ -47,6 +53,9 @@
 
 (defn four-of-a-kind? [hand]
   (= 1 (count (set (map :rank hand)))))
+
+#_ (defn four-of-a-kind? [hand]
+     (== apply max (vals (frequencies (map :rank hand))) 4)) ;three of a kind would work the same with four = three and 4 = 3
 
 (defn three-of-a-kind? [hand]
   (= '(3 1)
